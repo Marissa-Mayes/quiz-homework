@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Quiz</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style>
+
+    </style>
+
+<div id= "text">
+   <h1>Quiz</h1> 
+   <p>Ouestion:<text id="number1">0</text></p>
+   <p>Score:<text id="score1">0</text></p>
+   </div>
+<div id= "text2">
+ <div id="message">click to Start</div>   
+</div>
+<div id="question1"></div>
+<div id="option1"></div>
+<div id="option2"></div>
+<div id="option3"></div>
+<div id="option4"></div>
+<div id="answer1"></div>
+</div>
+
+
+<div id="disappear1"><button onclick="begin1()">Begin Quiz</button></div>
+<div id="next1"></div>
+
+<script>
+
+var question=[ " How do you get the total number of arguments passed to a funnction?<br /><br />", " Which method calls a function for each element in the arrary? <br /><br />", "Which method returns the string value converted to upper case? <br /><br/>", "Which of the following function of Boolean object givs a string of true or false?<br /><br />", "Which of the following function of Array returns a string representing the array <br /><br />"]
+var answer0 =[
+'<button class="button2" onclick="question1r()">argument.length</button>',
+"<button class=button2 onclick=question2r()>forEach()</button>",
+"<button class=button2 onclick=question3r()>toUpperCase</button>",
+"<button class=button2 onclick=question4r()>toString()>/button>",
+"<button class=button2 onclick=question4r()>toString()>/button>",
+];
+ 
+var answer1 =[
+"<button class=button2 onclick=question1w()>arg.length</button>",
+"<button class=button2 onclick=question2r()>each()</button>",
+"<button class=button2 onclick=question3w()>argument.length</button>",
+"<button class=button2 onclick=question4w()>argument.length</button>"
+];
+
+var answer2= [
+"<button class=button2 onclick=question1w()>get.length</button>",
+"<button class=button2 onclick=question2w()>array.all()</button>",
+"<button class=button2 onclick=question3w()>argument.length</button>",
+"<button class=button2 onclick=question4w()>argument.length</button>",
+];
+var answer3=[
+"<button class=button2 onclick=question1w()>none of the above</button>",
+ "<button class=button2 onclick=question2w()>none of the aboove</button>",
+"<button class=button2 onclick=question3w()>none of the above</button>",
+"<button class=button2 onclick=question4w()>none of the above</button>", 
+];
+
+
+var r = ["correct" , "correct" ,  "correct" , "correct" , "correct" , "correct" , "correct" , "correct" , "correct" , "correct" , "correct", "correct"];
+//var w =["incorrect" , "incorrect" , "incorrect" , "incorrect" , "incorrect" , "incorrect" , "incorrect" , "incorrect" , "incorrect" , "incorrect" , "incorrect" , "incorrect"];
+
+var n = 0;
+//n++;
+var s = 0;
+//s++;
+
+
+
+
+function begin1(){
+    console.log(begin1)
+    disappear1.innerHTML = "";
+    message.innerHTML = "";
+    question1.innerHTML = question[0];
+    option1.innerHTML = answer0[0];
+    option2.innerHTML = answer1[0];
+    option3.innerHTML = answer2[0];
+    option4.innerHTML = answer3[0];
+    number1.innerHTML = n++;
+
+}
+
+function question1r(){
+    console.log(question1r)
+    answer1.innerHTML = r[0];
+    option1.innerHTML= "";
+    option2.innerHTML= "";
+    option3.innerHTML= "";
+    option4.innerHTML= "";
+    next1.innerHTML= "<button class=button2 onclick=new2()>next question</button>";
+    score1.innerHTML= s++;
+}
+
+function question1w(){
+    
+    answer1.innerHTML = w[0];
+    option1.innerHTML= "";
+    option2.innerHTML= "";
+    option3.innerHTML= "";
+    option4.innerHTML= "";
+    next1.innerHTML= "<button class=button2 onclick=new2()>next question<button>";
+
+}
+
+function new2(){
+    console.log(new2)
+    question1.innerHTML= question[1];
+    option1.innerHTML = answer0[1];
+    option2.innerHTML = answer1[1];
+    option3.innerHTML = answer2[1];
+    option4.innerHTML = answer3[1];
+    next1.innerHTML  = "";
+    answer1.innerHTML = "";
+    number1.innerHTML = n++;
+
+
+    function question2r() {
+    console.log(question2r)
+    answer1.innerHTML = r[1];
+    option1.innerHTML= "";
+    option2.innerHTML= "";
+    option3.innerHTML= "";
+    option4.innerHTML= "";
+    next1.innerHTML= "<button class=button2 onclick=new3()>next question<button>";
+    score1.innerHTML= s++;
+
+}
+
+function question1w(){
+    
+    answer2.innerHTML = w[1];
+    option1.innerHTML= "";
+    option2.innerHTML= "";
+    option3.innerHTML= "";
+    option4.innerHTML= "";
+    next1.innerHTML= "<button class=buttons2 onclick=new3()>next question<button>";
+
+}};
+
+</script>
+
+
+
+
+
+</body>
+</html>
