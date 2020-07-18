@@ -6,145 +6,133 @@
     <title>JavaScript Quiz</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link rel="stylesheet" href="./style.css">
+
 </head>
 <body>
     <style>
 
     </style>
-
+      <div class="container">
 <div id= "text">
    <h1>Quiz</h1> 
    <p>Ouestion:<text id="number1">0</text></p>
    <p>Score:<text id="score1">0</text></p>
+   <p>time:<text id="clock">400</text></p>
    </div>
+      </div>
 <div id= "text2">
- <div id="message">click to Start</div>   
+ <div id="message"></div>   
+    </div>
+    <div class="container">
+<div id="questionText"></div>
+<button id="option1"></button>
+<button id="option2"></button>
+<button id="option3"></button>
+<button id="answer1"></button>
+    </div>
 </div>
-<div id="question1"></div>
-<div id="option1"></div>
-<div id="option2"></div>
-<div id="option3"></div>
-<div id="option4"></div>
-<div id="answer1"></div>
-</div>
-
-
-<div id="disappear1"><button onclick="begin1()">Begin Quiz</button></div>
-<div id="next1"></div>
+<div id="disappear1"><button onclick="renderQuestion()">Begin Quiz</button></div>
+    <div id="next1"></div>
 
 <script>
 
-var question=[ " How do you get the total number of arguments passed to a funnction?<br /><br />", " Which method calls a function for each element in the arrary? <br /><br />", "Which method returns the string value converted to upper case? <br /><br/>", "Which of the following function of Boolean object givs a string of true or false?<br /><br />", "Which of the following function of Array returns a string representing the array <br /><br />"]
-var answer0 =[
-'<button class="button2" onclick="question1r()">argument.length</button>',
-"<button class=button2 onclick=question2r()>forEach()</button>",
-"<button class=button2 onclick=question3r()>toUpperCase</button>",
-"<button class=button2 onclick=question4r()>toString()>/button>",
-"<button class=button2 onclick=question4r()>toString()>/button>",
+//var quizContainer = document.getElementById ("quiz");
+var resultsContainer = document.getElementById ("results");
+var nextButton = document.getElementById ("next");
+//var submitButton = document.getElementById ("submit");
+var questionText = document.getElementById ("questionText");
+var option1 = document.getElementById ("option1");
+var option2 = document.getElementById ("option2");
+var option3 = document.getElementById ("option3");
+var $clock =document.getElementById("clock")
+var questions =[
+    {
+        text: "Inside what HTML element do we put the JavaScript in?",
+        choices: ["<js>" ,"<scripting>" , "<script>",],
+        answer: "<script>"
+
+        
+    },
+    {
+        text: " using _____ statement is how you test for a condition?",
+        choices: ["select","Confirm","If"],
+        answer: "If",
+    },
+
+    {
+
+        text: "Is it possible to nest functions in JavaScript?",
+        choices: ["True" ,"False" , "None of above",],
+        answer: "True",
+
+    },
+
+    {
+
+    text: " How do you get the total arguments passed in a function",
+    choices: ["total.arg" ,"arg.length" ,"argument.length"],
+    answer: "argument.length",
+    }
+
 ];
- 
-var answer1 =[
-"<button class=button2 onclick=question1w()>arg.length</button>",
-"<button class=button2 onclick=question2r()>each()</button>",
-"<button class=button2 onclick=question3w()>argument.length</button>",
-"<button class=button2 onclick=question4w()>argument.length</button>"
-];
+//n is supposed to track the number of question that you're on
+var numberQuestion = 0;
 
-var answer2= [
-"<button class=button2 onclick=question1w()>get.length</button>",
-"<button class=button2 onclick=question2w()>array.all()</button>",
-"<button class=button2 onclick=question3w()>argument.length</button>",
-"<button class=button2 onclick=question4w()>argument.length</button>",
-];
-var answer3=[
-"<button class=button2 onclick=question1w()>none of the above</button>",
- "<button class=button2 onclick=question2w()>none of the aboove</button>",
-"<button class=button2 onclick=question3w()>none of the above</button>",
-"<button class=button2 onclick=question4w()>none of the above</button>", 
-];
+var score = 0;
+var clock = 400;
 
-
-var r = ["correct" , "correct" ,  "correct" , "correct" , "correct" , "correct" , "correct" , "correct" , "correct" , "correct" , "correct", "correct"];
-//var w =["incorrect" , "incorrect" , "incorrect" , "incorrect" , "incorrect" , "incorrect" , "incorrect" , "incorrect" , "incorrect" , "incorrect" , "incorrect" , "incorrect"];
-
-var n = 0;
-//n++;
-var s = 0;
-//s++;
-
-
-
-
-function begin1(){
-    console.log(begin1)
+function renderQuestion(){ 
+    
+    var question =questions[numberQuestion];
     disappear1.innerHTML = "";
     message.innerHTML = "";
-    question1.innerHTML = question[0];
-    option1.innerHTML = answer0[0];
-    option2.innerHTML = answer1[0];
-    option3.innerHTML = answer2[0];
-    option4.innerHTML = answer3[0];
-    number1.innerHTML = n++;
-
+    $clock.innerHTML = clock -1;
+    questionText.innerHTML = question.text;
+    option1.innerText = question.choices [0];
+    option2.innerText = question.choices [1];
+    option3.innerText = question.choices [2];
+    number1.innerText = numberQuestion+1;    
+      //time.innerText   =time.clock;  
 }
 
-function question1r(){
-    console.log(question1r)
-    answer1.innerHTML = r[0];
-    option1.innerHTML= "";
-    option2.innerHTML= "";
-    option3.innerHTML= "";
-    option4.innerHTML= "";
-    next1.innerHTML= "<button class=button2 onclick=new2()>next question</button>";
-    score1.innerHTML= s++;
-}
 
-function question1w(){
+function getAnswer(event){
+    var answer = event.target.innerText;
+    //var clock = clock -1;
+    if(answer === questions[numberQuestion].answer){
+        console.log ("right");
+        score+=5
+    } else {
+        console.log("incorrect");
+        score--
+    }
+    numberQuestion++;
+    score1.innerHTML= score;
+    console.log(score);
+    //clock --
+    renderQuestion();
+}
+option1.addEventListener("click", getAnswer);
+option2.addEventListener("click", getAnswer);
+option3.addEventListener("click", getAnswer);
+//nextButton.addEventListener("click",renderQuestion);
     
-    answer1.innerHTML = w[0];
-    option1.innerHTML= "";
-    option2.innerHTML= "";
-    option3.innerHTML= "";
-    option4.innerHTML= "";
-    next1.innerHTML= "<button class=button2 onclick=new2()>next question<button>";
 
+let update = setInterval(timer,1000);
+console.log(timer)
+function timer (){
+    clock = clock- 1;
+    if(clock < 400){
+        $clock.innerText = clock-1;
+        console.log(clock);
+    }
+    if (clock < 1){
+        window.clearInterval(update);
+    }
 }
 
-function new2(){
-    console.log(new2)
-    question1.innerHTML= question[1];
-    option1.innerHTML = answer0[1];
-    option2.innerHTML = answer1[1];
-    option3.innerHTML = answer2[1];
-    option4.innerHTML = answer3[1];
-    next1.innerHTML  = "";
-    answer1.innerHTML = "";
-    number1.innerHTML = n++;
-
-
-    function question2r() {
-    console.log(question2r)
-    answer1.innerHTML = r[1];
-    option1.innerHTML= "";
-    option2.innerHTML= "";
-    option3.innerHTML= "";
-    option4.innerHTML= "";
-    next1.innerHTML= "<button class=button2 onclick=new3()>next question<button>";
-    score1.innerHTML= s++;
-
-}
-
-function question1w(){
-    
-    answer2.innerHTML = w[1];
-    option1.innerHTML= "";
-    option2.innerHTML= "";
-    option3.innerHTML= "";
-    option4.innerHTML= "";
-    next1.innerHTML= "<button class=buttons2 onclick=new3()>next question<button>";
-
-}};
 
 </script>
 
